@@ -18,6 +18,7 @@ Thoughts:
 use a hashtable to store  <value, index> pair
 traverse the  array  and the map to find out 
 if there is   value in map for the element in array;
+O(n), O(n)
 */
 
 public class Solution {

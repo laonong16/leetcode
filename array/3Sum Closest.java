@@ -13,6 +13,7 @@ Return the sum of the three integers. You may assume that each input would have 
 
 
 Thougt :
+
 use 3 pointers to point current element, next element and the last element. 
 If the sum is less than target,
      it means we have to add a larger element so next element move to the next.
@@ -21,6 +22,7 @@ If the sum is greater,
 Keep doing this until the end. 
 Each time compare the difference between sum and target, 
 if it is less than minimum difference so far, then replace result with it, otherwise keep iterating.
+O(n ^2)
 */
 
 public class Solution {
