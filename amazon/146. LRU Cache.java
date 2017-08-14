@@ -60,7 +60,7 @@ public class LRUCache {
             return;
         } else {
             if(map.size() == capacity) {
-                map.remove(head.next.val);
+                map.remove(head.next.key);
                 head.next = head.next.next;
                 head.next.prev  = head;
             } 
