@@ -31,7 +31,8 @@ public class Solution {
 			}
 			visited[curV] = true;
 			for(int temp: map.get(curV)) {
-				que.offer(temp);
+				if(!visited(temp))
+					que.offer(temp);
 			}
 		}
 		for(boolean b : visited) {// check if  more than one connected component
