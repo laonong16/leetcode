@@ -13,15 +13,13 @@ Your function should return length = 2, with the first two elements of nums bein
 
 class Solution {
     public int removeDuplicates(int[] nums) {
-         public int removeDuplicates(int[] nums) {
-        if (nums.length == 0) return 0;
-
-        int index = 1;
-        for (int i = 1; i < nums.length; i++) {
-            if (nums[i] != nums[index-1])
-                nums[index++] = nums[i];
+        if (nums.length <= 2) return nums.length;
+        int n = nums.length;
+        int index = 2;
+        for (int i = 2; i < n; i++) {
+            if(nums[index-2] != nums[i])
+                 nums[index++] = nums[i];
         }
         return index;
-    }
     }
 }
