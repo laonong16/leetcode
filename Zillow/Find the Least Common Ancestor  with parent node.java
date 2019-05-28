@@ -1,8 +1,9 @@
-Find the Least Common Ancestor  with parent node
+/*Find the Least Common Ancestor  with parent node
 
 given two nodes of a binary tree. The nodes each have a reference to their parent node
  and you do not have the root node of the tree
-
+*/
+ 
  public class Solution {
  	public  TreeNode getLCA(TreeNode a, TreeNode b) {
  			TreeNode node1 = a;
