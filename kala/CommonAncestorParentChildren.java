@@ -55,18 +55,18 @@ hasCommonAncestor(parentChildPairs, 1, 3) => false
  */
 public static boolean commonAncestor2(int[][] pairs, int node1, int node2){
     Set<Integer> p1 = new HashSet<>(), p2 = new HashSet<>();
-    help_commonAncestor2(p1, node1, pairs);
-    help_commonAncestor2(p2, node2, pairs);
+    dfs(p1, node1, pairs);
+    dfs(p2, node2, pairs);
     for(int parent : p1){
         if(p2.contains(parent)) return true;
     }
     return false;
 }
-    public static void help_commonAncestor2(Set<Integer> parents, int node, int[][] pairs){
+    public static void dfs(Set<Integer> parents, int node, int[][] pairs){
         for(int[] pair : pairs){
             if(pair[1] == node){
                 parents.add(pair[0]);
-                help_commonAncestor2(parents, pair[0], pairs);
+                dfs(parents, pair[0], pairs);
             }
         }
     }
