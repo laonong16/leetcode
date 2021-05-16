@@ -57,7 +57,8 @@ Expected output: ["Paul", "Curtis"], ["Martha"]
 
     /*
     PT2 : 给 list of [name, time], time is string format: '1300' //下午一点
-return: list of names and the times where their swipe badges within one hour. if there are multiple intervals that satisfy
+return: list of names and the times where their swipe badges within one hour.
+ if there are multiple intervals that satisfy
 the condition, return any one of them.
 
 name1: time1, time2, time3...
@@ -80,18 +81,18 @@ output: {
         Map<String, List<String>> result = new HashMap<>();
         for(String emp: empEnterMap.keySet()) {
             if(empEnterMap.get(emp).size() >= 3) {
-                List<Integer> curEmpEntries = empEnterMap.get(emp);
-                Collections.sort(curEmpEntries);
-                for(int i = 0; i < curEmpEntries.size(); i++) {
-                    int index = getHourlyIndex(curEmpEntries, i);
-                    if(index - i >= 3) {
-                        List<String>  hourlyEntries = new ArrayList<>();
-                        while( i < index) {
-                            hourlyEntries.add(""+curEmpEntries.get(i));
-                            i++;
+                List<Integer> list = empEnterMap.get(emp);
+                Collections.sort(list);
+                for(int start = 0; start < list.size(); start++) {
+                    int end = start;
+                    List<String> temp = new ArrayList<>();
+                    while(end < list.size() && list.get(end) - list.get(start) <= 100) {
+                        temp.add(""+list.get(end));
+                        end++;
+                        if(temp.size() >= 3) {
+                            result.put(emp, temp);
+                            break;
                         }
-                        result.put(emp, hourlyEntries);
-                        break;
                     }
                 }
             }
@@ -100,18 +101,7 @@ output: {
         return result;
 
     }
-    static int getHourlyIndex(List<Integer> list, int startIndex) {
-        int endVal = list.get(startIndex) + 100;
-        int endPos = startIndex;
-        while(endPos < list.size()) {
-            if(list.get(endPos) <= endVal) {
-                endPos++;
-            } else {
-                break;
-            }
-        }
-        return endPos;
-    }
+
     public static void main(String[] args) {
         String[][] records = new String[][]{
                 {"Martha","exit"},
