@@ -102,7 +102,7 @@ notice that there is only one order of all courses: a->b->c, therefore mid cours
             Map<Character, Character> map = new HashMap<>();
             for (char[] course : courses) {
                 count[course[0] - 'A']++;
-                count[course[1] - 'A']++;
+                count[course[1] - 'A']+=2;
                 map.put(course[0], course[1]);
             }
             char start = 'A';
@@ -246,7 +246,7 @@ public static Set<String> halfWayLessons(String[][] courses) {
             }
             System.out.println("]");
 
-            char[][] courses2 = { { 'A', 'B' }, { 'C', 'D' }, { 'B', 'C' }, { 'E', 'F' }, { 'D', 'E' }, { 'F', 'G' } };
+            char[][] courses2 = { { 'G', 'B' }, { 'C', 'D' }, { 'B', 'C' }, { 'E', 'F' }, { 'D', 'E' }, { 'F', 'A' } };
             System.out.println(findMediumCourse(courses2));
 
             String[][] coursePairs = { { "58", "Software Design" }, { "58", "Linear Algebra" }, { "94", "Art History" },
